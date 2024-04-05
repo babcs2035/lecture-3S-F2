@@ -1,0 +1,145 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55b565a2a880 .scope module, "FullAdderFunction" "FullAdderFunction" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 1 "cout";
+    .port_info 4 /OUTPUT 1 "s";
+o0x7fc9212b11c8 .functor BUFZ 1, C4<z>; HiZ drive
+o0x7fc9212b11f8 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x55b565a1a730 .functor AND 1, o0x7fc9212b11c8, o0x7fc9212b11f8, C4<1>, C4<1>;
+o0x7fc9212b1138 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x55b565a48270 .functor AND 1, o0x7fc9212b11c8, o0x7fc9212b1138, C4<1>, C4<1>;
+L_0x55b565a48480 .functor OR 1, L_0x55b565a1a730, L_0x55b565a48360, C4<0>, C4<0>;
+L_0x55b565a48590 .functor AND 1, o0x7fc9212b11f8, o0x7fc9212b1138, C4<1>, C4<1>;
+L_0x55b565a486d0 .functor OR 1, L_0x55b565a48480, L_0x55b565a48590, C4<0>, C4<0>;
+L_0x55b565a487e0 .functor XOR 1, o0x7fc9212b11c8, o0x7fc9212b11f8, C4<0>, C4<0>;
+L_0x55b565a48890 .functor XOR 1, L_0x55b565a487e0, o0x7fc9212b1138, C4<0>, C4<0>;
+v0x55b565a2aba0_0 .net *"_ivl_0", 0 0, L_0x55b565a1a730;  1 drivers
+v0x55b565a46b70_0 .net *"_ivl_12", 0 0, L_0x55b565a487e0;  1 drivers
+v0x55b565a46c50_0 .net *"_ivl_2", 0 0, L_0x55b565a48270;  1 drivers
+v0x55b565a46d10_0 .net *"_ivl_5", 0 0, L_0x55b565a48360;  1 drivers
+v0x55b565a46dd0_0 .net *"_ivl_6", 0 0, L_0x55b565a48480;  1 drivers
+v0x55b565a46eb0_0 .net *"_ivl_8", 0 0, L_0x55b565a48590;  1 drivers
+v0x55b565a46f90_0 .net "cin", 0 0, o0x7fc9212b1138;  0 drivers
+v0x55b565a47050_0 .net "cout", 0 0, L_0x55b565a486d0;  1 drivers
+v0x55b565a47110_0 .net "s", 0 0, L_0x55b565a48890;  1 drivers
+v0x55b565a471d0_0 .net "x", 0 0, o0x7fc9212b11c8;  0 drivers
+v0x55b565a47290_0 .net "y", 0 0, o0x7fc9212b11f8;  0 drivers
+L_0x55b565a48360 .reduce/or L_0x55b565a48270;
+S_0x55b565a2aa10 .scope module, "simfulladd" "simfulladd" 3 4;
+ .timescale 0 0;
+v0x55b565a47e10_0 .var "cin", 0 0;
+v0x55b565a47ed0_0 .net "cout", 0 0, L_0x55b565a48cd0;  1 drivers
+v0x55b565a47f70_0 .net "s", 0 0, L_0x55b565a49000;  1 drivers
+v0x55b565a48070_0 .var "x", 0 0;
+v0x55b565a48140_0 .var "y", 0 0;
+S_0x55b565a473f0 .scope module, "add" "FullAdderStructure" 3 25, 4 1 0, S_0x55b565a2aa10;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 1 "cout";
+    .port_info 4 /OUTPUT 1 "s";
+L_0x55b565a48950 .functor AND 1, v0x55b565a48070_0, v0x55b565a48140_0, C4<1>, C4<1>;
+L_0x55b565a48a60 .functor AND 1, v0x55b565a48140_0, v0x55b565a47e10_0, C4<1>, C4<1>;
+L_0x55b565a48b20 .functor AND 1, v0x55b565a47e10_0, v0x55b565a48070_0, C4<1>, C4<1>;
+L_0x55b565a48b90 .functor OR 1, L_0x55b565a48950, L_0x55b565a48a60, C4<0>, C4<0>;
+L_0x55b565a48cd0 .functor OR 1, L_0x55b565a48b90, L_0x55b565a48b20, C4<0>, C4<0>;
+L_0x55b565a48e30 .functor XOR 1, v0x55b565a48070_0, v0x55b565a48140_0, C4<0>, C4<0>;
+L_0x55b565a49000 .functor XOR 1, L_0x55b565a48e30, v0x55b565a47e10_0, C4<0>, C4<0>;
+v0x55b565a475a0_0 .net "cin", 0 0, v0x55b565a47e10_0;  1 drivers
+v0x55b565a47680_0 .net "cout", 0 0, L_0x55b565a48cd0;  alias, 1 drivers
+v0x55b565a47740_0 .net "s", 0 0, L_0x55b565a49000;  alias, 1 drivers
+v0x55b565a477e0_0 .net "w1", 0 0, L_0x55b565a48950;  1 drivers
+v0x55b565a478a0_0 .net "w2", 0 0, L_0x55b565a48a60;  1 drivers
+v0x55b565a479b0_0 .net "w3", 0 0, L_0x55b565a48b20;  1 drivers
+v0x55b565a47a70_0 .net "w4", 0 0, L_0x55b565a48b90;  1 drivers
+v0x55b565a47b30_0 .net "w5", 0 0, L_0x55b565a48e30;  1 drivers
+v0x55b565a47bf0_0 .net "x", 0 0, v0x55b565a48070_0;  1 drivers
+v0x55b565a47cb0_0 .net "y", 0 0, v0x55b565a48140_0;  1 drivers
+    .scope S_0x55b565a2aa10;
+T_0 ;
+    %vpi_call 3 10 "$monitor", "%t In (x, y, cin) -> Out (s, cout): (%b, %b, %b) -> (%b, %b)", $time, v0x55b565a48070_0, v0x55b565a48140_0, v0x55b565a47e10_0, v0x55b565a47f70_0, v0x55b565a47ed0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48070_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a48140_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55b565a47e10_0, 0;
+    %delay 40, 0;
+    %vpi_call 3 21 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "./FullAdderFunction.v";
+    "simfulladd.v";
+    "./FullAdderStructure.v";
