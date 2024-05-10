@@ -1,0 +1,37 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55c64c77adf0 .scope module, "CPU" "CPU" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "ck";
+    .port_info 1 /INPUT 1 "rst";
+    .port_info 2 /OUTPUT 16 "ia";
+    .port_info 3 /INPUT 16 "id";
+    .port_info 4 /OUTPUT 16 "da";
+    .port_info 5 /INOUT 16 "dd";
+    .port_info 6 /OUTPUT 1 "rw";
+o0x7ffa309ae018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55c64c77c350_0 .net "ck", 0 0, o0x7ffa309ae018;  0 drivers
+o0x7ffa309ae048 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v0x55c64c77c7b0_0 .net "da", 15 0, o0x7ffa309ae048;  0 drivers
+o0x7ffa309ae078 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v0x55c64c77cba0_0 .net "dd", 15 0, o0x7ffa309ae078;  0 drivers
+o0x7ffa309ae0a8 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v0x55c64c7c1d10_0 .net "ia", 15 0, o0x7ffa309ae0a8;  0 drivers
+o0x7ffa309ae0d8 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v0x55c64c7c1df0_0 .net "id", 15 0, o0x7ffa309ae0d8;  0 drivers
+o0x7ffa309ae108 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55c64c7c1f20_0 .net "rst", 0 0, o0x7ffa309ae108;  0 drivers
+o0x7ffa309ae138 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55c64c7c1fe0_0 .net "rw", 0 0, o0x7ffa309ae138;  0 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "cpu.v";
