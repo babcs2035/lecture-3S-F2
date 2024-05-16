@@ -4,7 +4,7 @@ module CPU(ck, rst, ia, id, da, dd, rw);
   output rw;
   output [15:0] ia, da;
   inout [15:0] dd;
-  
+
   reg [1:0] stage;
   reg [15:0] inst, pc, pcc, fua, fub, lsua, lsub, lsuc, pci, fuc;
   reg [15:0] rf[0:14];
@@ -41,6 +41,12 @@ module CPU(ck, rst, ia, id, da, dd, rw);
         stage <= 1;
       end
       else if (stage == 1) begin
+        if (opcode[3:0] == 'b1000 || (opcode[3:0] == 'b1001 && flag == 1)) begin
+          pci <= bbus;
+        end
+        else begin
+          pci <= pc + 1;
+        end
         if (opcode[3] == 0) begin
           fua <= abus;
           fub <= bbus;
@@ -48,12 +54,6 @@ module CPU(ck, rst, ia, id, da, dd, rw);
         else if (opcode[2:1] == 'b01) begin
           lsua <= abus;
           lsub <= bbus;
-        end
-        else if (opcode[3:0] == 'b1000 || (opcode[3:0] == 'b1001 && flag == 1)) begin
-          pci <= bbus;
-        end
-        else begin
-          pci <= pc + 1;
         end
         stage <= 2;
       end
